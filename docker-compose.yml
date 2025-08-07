@@ -21,7 +21,7 @@ services:
     # set the hostname to migrate-mongodb1.ricardovz.com
     image: *mongo_version
     hostname: mongodb1
-    command: mongod --replSet rs0 --bind_ip_all # Enable replica set mode and allow external connections
+    command: mongod --replSet rs0 --bind_ip_all --port 27017 # Enable replica set mode and allow external connections
     ports:
       - "27017:27017" # Expose MongoDB default port
     volumes:
@@ -29,7 +29,14 @@ services:
     networks:
       - mongodb_network
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.serverStatus()"]
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "mongodb://mongodb1:27017",
+          "--eval",
+          "db.serverStatus()",
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -40,15 +47,22 @@ services:
     container_name: mongodb2
     image: *mongo_version
     hostname: mongodb2
-    command: mongod --replSet rs0 --bind_ip_all
+    command: mongod --replSet rs0 --bind_ip_all --port 27018
     ports:
-      - "27018:27017" # Different port to avoid conflicts
+      - "27018:27018" # Different port to avoid conflicts
     volumes:
       - mongodb2_data:/data/db
     networks:
       - mongodb_network
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.serverStatus()"]
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "mongodb://mongodb2:27018",
+          "--eval",
+          "db.serverStatus()",
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -59,15 +73,22 @@ services:
     container_name: mongodb3
     image: *mongo_version
     hostname: mongodb3
-    command: mongod --replSet rs0 --bind_ip_all
+    command: mongod --replSet rs0 --bind_ip_all --port 27019
     ports:
-      - "27019:27017" # Different port to avoid conflicts
+      - "27019:27019" # Different port to avoid conflicts
     volumes:
       - mongodb3_data:/data/db
     networks:
       - mongodb_network
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.serverStatus()"]
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "mongodb://mongodb3:27019",
+          "--eval",
+          "db.serverStatus()",
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -95,8 +116,8 @@ services:
             _id: \"rs0\",
             members: [
               { _id: 0, host: \"mongodb1:27017\" },
-              { _id: 1, host: \"mongodb2:27017\" },
-              { _id: 2, host: \"mongodb3:27017\" }
+              { _id: 1, host: \"mongodb2:27018\" },
+              { _id: 2, host: \"mongodb3:27019\" }
             ]
           })
         ' && \

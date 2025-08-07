@@ -1,26 +1,20 @@
-.PHONY: install build dev start docker-build docker-up docker-down clean
+.PHONY: install build dev start clean
 
 install:
 	npm install
 
 build:
+	docker-compose build
 	npm run build
 
 dev:
+	docker-compose up -d mongodb-health
 	npm run dev
 
 start:
 	npm start
 
-docker-build:
-	docker-compose build
-
-docker-up:
-	docker-compose up -d app mongodb-health
-
-docker-down:
-	docker-compose down -v
-
 clean:
+	docker-compose down -v
 	rm -rf dist
 	rm -rf node_modules 

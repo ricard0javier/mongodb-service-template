@@ -2,7 +2,7 @@
 
 A TypeScript-based MongoDB service template
 The connection string for the docker cluster is:
-`mongodb://mongodb1:27017,mongodb2:27017,mongodb3:27017/?replicaSet=rs0`
+`mongodb://mongodb1:27017,mongodb2:27018,mongodb3:27019/?replicaSet=rs0`
 
 ## Features
 
@@ -18,41 +18,20 @@ The connection string for the docker cluster is:
 
 ## Getting Started
 
+Start by adding code in the [index.ts](src/index.ts) or using the [playground](playground.ipynb)
+
 ### Local Development
 
-1. Install dependencies:
+1. Clean and Install dependencies:
 
    ```bash
-   make install
+   make clean install
    ```
 
 2. Start the development server:
    ```bash
    make dev
    ```
-
-### Using Docker
-
-1. Build the Docker images:
-
-   ```bash
-   make docker-build
-   ```
-
-2. Start the services:
-
-   ```bash
-   make docker-up
-   ```
-
-3. Stop the services:
-   ```bash
-   make docker-down
-   ```
-
-## Available Endpoints
-
-- To be defined
 
 ## Project Structure
 
@@ -74,11 +53,8 @@ To be defined
 
 ## Development Commands
 
+- `make clean`: Clean build artifacts
 - `make install`: Install dependencies
 - `make build`: Build the TypeScript code
 - `make dev`: Start development server
 - `make start`: Start production server
-- `make docker-build`: Build Docker images
-- `make docker-up`: Start Docker services
-- `make docker-down`: Stop Docker services
-- `make clean`: Clean build artifacts

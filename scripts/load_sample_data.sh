@@ -9,8 +9,7 @@ SAMPLE_DATA_URL="https://huggingface.co/datasets/MongoDB/embedded_movies/resolve
 SAMPLE_DATA_FILE="sample_movies.json"
 DB_NAME="sample_mflix"
 COLLECTION_NAME="embedded_movies"
-# CONNECTION_STRING="mongodb://mongodb1:27017,mongodb2:27018,mongodb3:27019/?replicaSet=rs0"
-CONNECTION_STRING="mongodb://ip-10-0-1-120:27017,ip-10-0-1-85:27017,ip-10-0-1-72:27017/?replicaSet=rs0"
+CONNECTION_STRING="mongodb://mongodb1:27017,mongodb2:27018,mongodb3:27019/?replicaSet=rs0"
 
 
 echo "Downloading sample movies data..."
