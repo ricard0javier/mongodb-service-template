@@ -1,4 +1,4 @@
-# MongoDB Service Template
+# MongoDB Service Template - NodeJS
 
 A TypeScript-based MongoDB service template
 The connection string for the docker cluster is:

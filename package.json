@@ -1,7 +1,7 @@
 {
-  "name": "mongodb-service-template",
+  "name": "template-nodejs-mongodb-service",
   "version": "1.0.0",
-  "description": "MongoDB Service Template",
+  "description": "MongoDB Service Template - NodeJS",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
