@@ -33,24 +33,6 @@ Start by adding code in the [index.ts](src/index.ts) or using the [playground](p
    make dev
    ```
 
-## Project Structure
-
-```
-.
-├── src/
-│   └── index.ts
-├── Dockerfile
-├── docker-compose.yml
-├── package.json
-├── tsconfig.json
-├── Makefile
-└── README.md
-```
-
-## Environment Variables
-
-To be defined
-
 ## Development Commands
 
 - `make clean`: Clean build artifacts
